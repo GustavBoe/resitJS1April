@@ -1,0 +1,165 @@
+body {
+  background-color: rgba(58, 101, 165, 1);
+}
+.nav-logo > img,
+.navbar ul {
+  background-color: rgba(165, 58, 55, 1);
+}
+header {
+  border-radius: 1rem;
+}
+.active {
+  border-bottom-style: solid;
+  border-color: white;
+  font-weight: bold;
+}
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: justify;
+}
+.navbar ul {
+  padding: 2rem;
+  border-radius: 5rem;
+}
+.navbar li {
+  display: inline-block;
+}
+.navbar a {
+  margin: 3vw;
+  text-decoration: none;
+  font-size: 100%;
+}
+.navbar a,
+.navbar p {
+  color: white;
+}
+.navbar p {
+  margin-left: 0%;
+}
+.nav-logo img {
+  width: 10rem;
+  height: auto;
+}
+.navbar ul,
+.product-container,
+.product-link-button > button {
+  font-family: Jockey One;
+  letter-spacing: 0.1rem;
+}
+/*Index.html*/
+#display-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 5rem;
+}
+.product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8rem;
+  padding-bottom: 2em;
+}
+.product-container > img {
+  max-width: 15rem;
+  border-radius: 1rem;
+}
+.product-container > h2 {
+  font-size: 3rem;
+  color: white;
+}
+.product-link-button > button,
+.button-container > button {
+  border: solid, rgba(58, 101, 165, 1);
+  border-radius: 2rem;
+  height: 5vh;
+  background-color: white;
+  font-size: 2vh;
+}
+.product-link-button > button,
+.button-container {
+  width: 15rem;
+}
+.button-container > button {
+  width: 10vw;
+  margin-top: 1rem;
+}
+.button-container > button:hover,
+.product-link-button > button:hover {
+  background-color: rgba(93, 163, 70, 1);
+  color: white;
+}
+.button-container > button:active,
+.product-link-button > button:active {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.chosen-product-container {
+  margin-top: 5%;
+  margin-bottom: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.chosen-product-container > img {
+  margin-top: 2%;
+  width: 30%;
+  height: auto;
+}
+
+.chosen-Product-Heading {
+  font-size: 30vh;
+}
+.specific-description {
+  font-family: Brygada1918;
+  padding: 5%;
+}
+.chosen-product-button,
+.cart-buy-button,
+.cart-continue-button,
+.chosen-product-container > button {
+  font-family: Bebas Neue;
+  font-size: 24px;
+  color: white;
+  background-color: rgba(10, 54, 65, 1);
+  border: none;
+  width: 8em;
+  height: 3em;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.specific-cart-button:hover {
+  background-color: white;
+  color: rgba(10, 54, 65, 1);
+  border-color: rgba(10, 54, 65, 1);
+  border-style: solid;
+  border-width: 5px;
+  cursor: pointer;
+}
+.cart-heading {
+  text-align: center;
+}
+.cart-container,
+.sum-container > h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.cart-container > img {
+  width: 10%;
+}
+.cart-container > h3 {
+  margin: 2%;
+}
