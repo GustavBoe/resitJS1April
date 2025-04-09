@@ -5,9 +5,7 @@ body {
 .navbar ul {
   background-color: rgba(165, 58, 55, 1);
 }
-header {
-  border-radius: 1rem;
-}
+
 .active {
   border-bottom-style: solid;
   border-color: white;
@@ -17,6 +15,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   text-align: justify;
+  justify-self: center;
 }
 .navbar ul {
   padding: 2rem;
@@ -84,7 +83,7 @@ header {
   width: 15rem;
 }
 .button-container > button {
-  width: 10vw;
+  width: 10rem;
   margin-top: 1rem;
 }
 .button-container > button:hover,
@@ -162,4 +161,171 @@ header {
 }
 .cart-container > h3 {
   margin: 2%;
+}
+@media (max-width: 450px) {
+  .navbar ul {
+    padding: 2rem;
+    border-radius: 3rem;
+  }
+  .navbar a {
+    margin: 0.25rem;
+    font-size: 1rem;
+  }
+  .nav-logo img {
+    width: 3rem;
+    height: auto;
+  }
+  #display-container {
+    grid-gap: 1rem;
+  }
+  .product-container {
+    margin-top: 1rem;
+    border-radius: 2rem;
+    padding-bottom: 1em;
+  }
+  .product-container > img {
+    max-width: 7rem;
+    border-radius: 0.5rem;
+  }
+  .product-container > h2 {
+    font-size: 1rem;
+  }
+  .button-container {
+    display: none;
+  }
+  .product-link-button > button {
+    border: solid, rgba(58, 101, 165, 1);
+    border-radius: 2rem;
+    height: 2rem;
+    background-color: white;
+    font-size: 0.5rem;
+  }
+  .product-link-button > button {
+    width: 7rem;
+  }
+}
+@media (min-width: 451px) and (max-width: 530px) {
+  .navbar ul {
+    padding: 2rem;
+    border-radius: 5rem;
+  }
+  .navbar a {
+    margin: 0.5rem;
+    font-size: 1rem;
+  }
+  .nav-logo img {
+    width: 5rem;
+    height: auto;
+  }
+  #display-container {
+    grid-gap: 1rem;
+  }
+  .product-container {
+    margin-top: 1rem;
+    border-radius: 4rem;
+    padding-bottom: 1em;
+  }
+  .product-container > img {
+    max-width: 10rem;
+    border-radius: 0.5rem;
+  }
+  .product-container > h2 {
+    font-size: 1rem;
+  }
+  .button-container {
+    display: none;
+  }
+  .product-link-button > button {
+    border: solid, rgba(58, 101, 165, 1);
+    border-radius: 2rem;
+    height: 2rem;
+    background-color: white;
+    font-size: 0.5rem;
+  }
+  .product-link-button > button {
+    width: 10rem;
+  }
+}
+@media (min-width: 531px) and (max-width: 630px) {
+  .navbar ul {
+    padding: 2rem;
+    border-radius: 5rem;
+  }
+  .navbar a {
+    margin: 1rem;
+    font-size: 1rem;
+  }
+  .nav-logo img {
+    width: 5rem;
+    height: auto;
+  }
+  #display-container {
+    grid-gap: 1rem;
+  }
+  .product-container {
+    margin-top: 1rem;
+    border-radius: 4rem;
+    padding-bottom: 1em;
+  }
+  .product-container > img {
+    max-width: 10rem;
+    border-radius: 0.5rem;
+  }
+  .product-container > h2 {
+    font-size: 1rem;
+  }
+  .product-link-button > button,
+  .button-container > button {
+    border: solid, rgba(58, 101, 165, 1);
+    border-radius: 2rem;
+    height: 2rem;
+    background-color: white;
+    font-size: 0.5rem;
+  }
+  .product-link-button > button,
+  .button-container {
+    width: 10rem;
+  }
+  .button-container > button {
+    width: 5rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 631px) and (max-width: 850px) {
+  .navbar a {
+    margin: 1rem;
+    font-size: 1rem;
+  }
+  #display-container {
+    grid-gap: 2rem;
+  }
+  .product-container {
+    margin-top: 2rem;
+    border-radius: 4rem;
+    padding-bottom: 1em;
+  }
+  .product-container > img {
+    max-width: 10rem;
+    border-radius: 1rem;
+  }
+  .product-container > h2 {
+    font-size: 2rem;
+  }
+  .product-link-button > button,
+  .button-container > button {
+    border: solid, rgba(58, 101, 165, 1);
+    border-radius: 2rem;
+    height: 2rem;
+    background-color: white;
+    font-size: 1rem;
+  }
+  .product-link-button > button,
+  .button-container {
+    width: 10rem;
+  }
+  .button-container > button {
+    width: 5rem;
+    margin-top: 1rem;
+  }
 }
