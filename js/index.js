@@ -1,5 +1,5 @@
 const apiURL = "https://v2.api.noroff.dev/gamehub";
-
+let cartList = [];
 let allProducts = [];
 async function getProducts(url) {
   try {
@@ -9,14 +9,6 @@ async function getProducts(url) {
   } catch (error) {
     console.log("Something went wrong");
   } finally {
-  }
-}
-async function addButtonClick() {
-  try {
-    await cartList.push(allProducts[product]);
-    console.log(cartList);
-  } catch (error) {
-    console.log("Something went wrong", error);
   }
 }
 const displayContainer = document.getElementById("display-container");
@@ -41,15 +33,15 @@ function generateProductHtml(product) {
   }
 
   const productLink = document.createElement("a");
-  productLink.href = `product.html?id=${allProducts[product].id}`; /* Code borrowed from Tonje Schjefstad´s "bestsellers.js"*/
+  productLink.href = `../product/index.html?id=${allProducts[product].id}`; /* Code borrowed from Tonje Schjefstad´s "bestsellers.js"*/
   productLink.classList.add("product-link-button");
   productLink.innerHTML = "<button>View</button>";
 
   async function addButtonClick() {
     try {
       await cartList.push(allProducts[product]);
-      console.log(cartList);
       localStorage.setItem("cartList", JSON.stringify(cartList));
+      console.log(localStorage.getItem("cartList"));
     } catch (error) {
       console.log("Something went wrong", error);
     }

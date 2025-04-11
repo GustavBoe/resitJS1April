@@ -1,5 +1,6 @@
 const apiURL = "https://v2.api.noroff.dev/gamehub";
 let chosenProduct = [];
+let cartList = [];
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 
@@ -14,10 +15,6 @@ for (const parameter of searchParameters) {
   } finally {
   }
 }
-
-const displayChosenContainer = document.getElementById(
-  "display-chosen-container"
-);
 
 function generateChosenProductHtml(product) {
   const chosenProductContainer = document.createElement("div");
@@ -40,12 +37,9 @@ function generateChosenProductHtml(product) {
   } else {
     productPrice.textContent = "$" + " " + chosenProduct.discountedPrice;
   }
-
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
-  addToCartButton.addEventListener("click", () => {
-    cartList.push(chosenProduct);
-  });
+  addToCartButton.addEventListener("click", function () {});
 
   chosenProductContainer.append(
     productTitle,

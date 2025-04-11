@@ -101,7 +101,7 @@ body {
 }
 
 .button-container {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-between;
 }
