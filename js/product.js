@@ -1,6 +1,6 @@
 const apiURL = "https://v2.api.noroff.dev/gamehub";
 let chosenProduct = [];
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart-data")) || [];
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 
@@ -28,6 +28,7 @@ function removeProductFromCart(id) {
 
 function addProductToCart(id) {
   let selectedProduct = chosenProduct.id;
+
   let search = cart.find((x) => x.id === selectedProduct);
 
   if (search === undefined) {
@@ -37,13 +38,22 @@ function addProductToCart(id) {
     });
   } else {
     search.item += 1;
-    console.log(search);
   }
   update(selectedProduct);
+  cart = cart.filter((x) => x.item !== 0);
 }
 
 let update = (id) => {
-  document.getElementById("");
+  let selectedProduct = chosenProduct.id;
+
+  let search = cart.find((x) => x.id === selectedProduct) || [];
+
+  if (search.item === undefined) {
+    document.getElementById("header-cart-counter").innerHTML = 0;
+  } else {
+    document.getElementById("header-cart-counter").innerHTML = search.item;
+  }
+  localStorage.setItem("cart-data", JSON.stringify(cart));
 };
 
 const displayChosenContainer = document.getElementById(
@@ -94,5 +104,6 @@ async function displayChosenProduct(data) {
 }
 async function main() {
   await displayChosenProduct(chosenProduct);
+  await update(chosenProduct);
 }
 main();
