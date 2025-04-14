@@ -1,6 +1,6 @@
 const apiURL = "https://v2.api.noroff.dev/gamehub";
 let chosenProduct = [];
-let cartList = [];
+let cart = [];
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 
@@ -15,6 +15,40 @@ for (const parameter of searchParameters) {
   } finally {
   }
 }
+function removeProductFromCart(id) {
+  let selectedProduct = chosenProduct.id;
+  let search = cart.find((x) => x.id === selectedProduct);
+
+  if (search.item === 0) return;
+  else {
+    search.item -= 1;
+    console.log(search);
+  }
+}
+
+function addProductToCart(id) {
+  let selectedProduct = chosenProduct.id;
+  let search = cart.find((x) => x.id === selectedProduct);
+
+  if (search === undefined) {
+    cart.push({
+      id: selectedProduct,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+    console.log(search);
+  }
+  update(selectedProduct);
+}
+
+let update = (id) => {
+  document.getElementById("");
+};
+
+const displayChosenContainer = document.getElementById(
+  "display-chosen-container"
+);
 
 function generateChosenProductHtml(product) {
   const chosenProductContainer = document.createElement("div");
@@ -39,7 +73,9 @@ function generateChosenProductHtml(product) {
   }
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
-  addToCartButton.addEventListener("click", function () {});
+  addToCartButton.addEventListener("click", () => {
+    addProductToCart(chosenProduct);
+  });
 
   chosenProductContainer.append(
     productTitle,

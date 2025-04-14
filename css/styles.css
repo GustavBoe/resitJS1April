@@ -48,6 +48,15 @@ body {
   font-family: Jockey One;
   letter-spacing: 0.1rem;
 }
+.header-cart {
+  position: relative;
+}
+.header-cart-counter {
+  background-color: rgba(165, 58, 55, 1);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 /*Index.html*/
 #display-container {
   display: grid;
