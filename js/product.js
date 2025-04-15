@@ -15,7 +15,7 @@ for (const parameter of searchParameters) {
   }
 }
 
-function removeProductFromCart(id) {
+let removeProductFromCart = (id) => {
   let selectedProduct = chosenProduct.id;
   let search = cart.find((x) => x.id === selectedProduct);
 
@@ -28,9 +28,9 @@ function removeProductFromCart(id) {
   update(selectedProduct);
   cart = cart.filter((x) => x.item !== 0);
   localStorage.setItem("cart-data", JSON.stringify(cart));
-}
+};
 
-function addProductToCart(id) {
+let addProductToCart = (id) => {
   let selectedProduct = chosenProduct.id;
 
   let search = cart.find((x) => x.id === selectedProduct);
@@ -45,7 +45,7 @@ function addProductToCart(id) {
   }
   update(selectedProduct);
   cart = cart.filter((x) => x.item !== 0);
-}
+};
 
 let update = (id) => {
   let selectedProduct = chosenProduct.id;
@@ -60,10 +60,12 @@ let update = (id) => {
   calculation();
   localStorage.setItem("cart-data", JSON.stringify(cart));
 };
+
 let calculation = () => {
   let cartCounter = document.getElementById("header-cart-counter");
   cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
+
 calculation();
 const displayChosenContainer = document.getElementById(
   "display-chosen-container"
@@ -95,13 +97,19 @@ function generateChosenProductHtml(product) {
   addToCartButton.addEventListener("click", () => {
     addProductToCart(chosenProduct);
   });
+  const removeFromCartButton = document.createElement("button");
+  removeFromCartButton.textContent = "Remove from cart";
+  removeFromCartButton.addEventListener("click", () =>
+    removeProductFromCart(chosenProduct)
+  );
 
   chosenProductContainer.append(
     productTitle,
     productImage,
     productDescription,
     productPrice,
-    addToCartButton
+    addToCartButton,
+    removeFromCartButton
   );
 
   return chosenProductContainer;

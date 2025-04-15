@@ -40,13 +40,13 @@ let generateCartProducts = () => {
           <p>${search.title}</p>
           <p class= "cart-product-price">$ ${search.discountedPrice}</p>
           </h2>
-          <i class="fa-solid fa-xmark"></i>
+        
           </div>
-          <div class = "cart-product-buttons">
-          <i onclick = "removeProductFromCart(${id})"class="fa-sharp fa-solid fa-minus"></i>
+          <div class = "cart-product-quantity">
+
           <div id=${id} class= "quantity">
-          ${item}</div>
-          <i onclick=" addProductToCart(${id})" class="fa-sharp fa-solid fa-plus"></i>
+          Quantity: ${item}</div>
+          
           </div>
           
 
@@ -66,16 +66,13 @@ let generateCartProducts = () => {
           <p>${search.title}</p>
           <p class= "cart-product-price">$ ${search.price}</p>
           </h2>
-          <i class="fa-solid fa-xmark"></i>
           </div>
+          <div class = "cart-product-quantity">
 
-          <div class = "cart-product-buttons">
-          <i onclick = "removeProductFromCart(${id})"class="fa-sharp fa-solid fa-minus"></i>
           <div id=${id} class= "quantity">
-          ${item}</div>
-          <i onclick=" addProductToCart(${id})" class="fa-sharp fa-solid fa-plus"></i>
+          Quantity: ${item}</div>
+          
           </div>
-
           <h3></h3>
 
         </div>
@@ -92,54 +89,9 @@ let generateCartProducts = () => {
     <button class="homeButton">Back to home </button></a>`;
   }
 };
+
 async function main() {
   await getProducts(apiURL);
   await generateCartProducts();
 }
 main();
-
-let removeProductFromCart = (id) => {
-  let selectedProduct = allProducts[product].id;
-  let search = cart.find((x) => x.id === selectedProduct);
-
-  if (search === undefined) return;
-  else if (search.item === 0) return;
-  else {
-    search.item -= 1;
-    console.log(search);
-  }
-  update(selectedProduct);
-  cart = cart.filter((x) => x.item !== 0);
-  localStorage.setItem("cart-data", JSON.stringify(cart));
-};
-
-let addProductToCart = (id) => {
-  let selectedProduct = search.id;
-
-  let search = cart.find((x) => x.id === selectedProduct);
-
-  if (search === undefined) {
-    cart.push({
-      id: selectedProduct,
-      item: 1,
-    });
-  } else {
-    search.item += 1;
-  }
-  update(selectedProduct);
-  cart = cart.filter((x) => x.item !== 0);
-};
-
-let update = (id) => {
-  let selectedProduct = chosenProduct.id;
-
-  let search = cart.find((x) => x.id === selectedProduct) || [];
-
-  if (search.item === undefined) {
-    document.getElementById("header-cart-counter").innerHTML = 0;
-  } else {
-    document.getElementById("header-cart-counter").innerHTML = search.item;
-  }
-  calculation();
-  localStorage.setItem("cart-data", JSON.stringify(cart));
-};
