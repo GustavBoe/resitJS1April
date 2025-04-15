@@ -1,5 +1,4 @@
 const apiURL = "https://v2.api.noroff.dev/gamehub";
-let cartList = [];
 let allProducts = [];
 async function getProducts(url) {
   try {

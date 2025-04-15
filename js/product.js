@@ -12,18 +12,22 @@ for (const parameter of searchParameters) {
     chosenProduct = await json.data;
   } catch (error) {
     console.log("Something went wrong", error);
-  } finally {
   }
 }
+
 function removeProductFromCart(id) {
   let selectedProduct = chosenProduct.id;
   let search = cart.find((x) => x.id === selectedProduct);
 
-  if (search.item === 0) return;
+  if (search === undefined) return;
+  else if (search.item === 0) return;
   else {
     search.item -= 1;
     console.log(search);
   }
+  update(selectedProduct);
+  cart = cart.filter((x) => x.item !== 0);
+  localStorage.setItem("cart-data", JSON.stringify(cart));
 }
 
 function addProductToCart(id) {
@@ -53,9 +57,14 @@ let update = (id) => {
   } else {
     document.getElementById("header-cart-counter").innerHTML = search.item;
   }
+  calculation();
   localStorage.setItem("cart-data", JSON.stringify(cart));
 };
-
+let calculation = () => {
+  let cartCounter = document.getElementById("header-cart-counter");
+  cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
+};
+calculation();
 const displayChosenContainer = document.getElementById(
   "display-chosen-container"
 );
