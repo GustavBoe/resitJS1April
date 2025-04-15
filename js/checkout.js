@@ -31,6 +31,27 @@ let generateCartProducts = () => {
         let search = allProducts.find((y) => y.id === id) || [];
         if (!search.onSale) {
           return `
+        <div class= "cart-product"> 
+        <img width = "160" src=${search.image.url} alt="" />
+          <div class = "cart-product-details">
+  
+            <div class = "title-price-del">
+            <h2 class = title-price">
+            <p>${search.title}</p>
+            <p class= "cart-product-price">$ ${search.price}</p>
+            <i onclick="removeProduct(${search.id})" class="fa-solid fa-minus"></i>
+            </h2>
+            </div>
+            <div class = "cart-product-quantity">
+            <div id=${id} class= "quantity">
+            Quantity: ${item}</div>
+            </div>
+            <h3></h3>
+          </div>
+        </div>
+        `;
+        } else {
+          return `
       <div class= "cart-product"> 
       <img width="160" src=${search.image.url} alt="" />
         <div class = "cart-product-details">
@@ -39,42 +60,14 @@ let generateCartProducts = () => {
           <h2 class = "title-price">
           <p>${search.title}</p>
           <p class= "cart-product-price">$ ${search.discountedPrice}</p>
-          </h2>
-        
-          </div>
-          <div class = "cart-product-quantity">
-
-          <div id=${id} class= "quantity">
-          Quantity: ${item}</div>
-          
-          </div>
-          
-
-          <h3>$ ${item * search.price}</h3>
-
-        </div>
-      </div>
-      `;
-        } else {
-          return `
-      <div class= "cart-product"> 
-      <img width = "160" src=${search.image.url} alt="" />
-        <div class = "cart-product-details">
-
-          <div class = "title-price-del">
-          <h2 class = title-price">
-          <p>${search.title}</p>
-          <p class= "cart-product-price">$ ${search.price}</p>
+          <i onclick="removeProduct(${id})" class="fa-solid fa-minus"></i>
           </h2>
           </div>
           <div class = "cart-product-quantity">
-
           <div id=${id} class= "quantity">
           Quantity: ${item}</div>
-          
           </div>
-          <h3></h3>
-
+          <h3>$ ${item * search.discountedPrice}</h3>
         </div>
       </div>
       `;
@@ -89,9 +82,32 @@ let generateCartProducts = () => {
     <button class="homeButton">Back to home </button></a>`;
   }
 };
+let totalSum = () => {
+  if (cart.length !== 0) {
+    let amount = cart
+      .map((x) => {
+        let { item, id } = x;
+        let search = allProducts.find((y) => y.id === id) || [];
+        if (!search.onSale) {
+          return item * search.price;
+        } else {
+          return item * search.discountedPrice;
+        }
+      })
+      .reduce((x, y) => x + y, 0);
+    checkoutTotal.innerHTML = `<button onclick="clearEntireCart()" class="clearEntireButton">Clear cart</button> <h2>Total sum: ${amount}</h2>`;
+  } else return;
+};
 
+let clearEntireCart = () => {
+  cart = [];
+  generateCartProducts();
+  calculation();
+  localStorage.setItem("cart-data", JSON.stringify(cart));
+};
 async function main() {
   await getProducts(apiURL);
-  await generateCartProducts();
+  await generateCartProducts(cart);
+  totalSum();
 }
 main();
