@@ -1,4 +1,3 @@
-import loader from "./loadingFunctions.mjs";
 const apiURL = "https://v2.api.noroff.dev/gamehub";
 let cart = JSON.parse(localStorage.getItem("cart-data")) || [];
 let allProducts = [];
@@ -90,13 +89,7 @@ async function displayProducts(data) {
 async function main() {
   loader.show();
   calculation();
-  try {
-    await getProducts(apiURL);
-    await displayProducts(allProducts);
-  } catch (error) {
-    alert(error);
-  } finally {
-    loader.hide();
-  }
+  await getProducts(apiURL);
+  await displayProducts(allProducts);
 }
 main();
