@@ -15,7 +15,7 @@ let calculation = () => {
   let cartCounter = document.getElementById("header-cart-counter");
   cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
 };
-
+calculation();
 const displayContainer = document.getElementById("display-container");
 
 function generateProductHtml(product) {

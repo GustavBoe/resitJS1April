@@ -4,14 +4,16 @@ let cart = JSON.parse(localStorage.getItem("cart-data")) || [];
 const parameterString = window.location.search;
 const searchParameters = new URLSearchParams(parameterString);
 
-for (const parameter of searchParameters) {
-  const productApi = apiURL + "/" + parameter[1];
-  try {
-    const response = await fetch(productApi);
-    const json = await response.json();
-    chosenProduct = await json.data;
-  } catch (error) {
-    console.log("Something went wrong", error);
+async function getProduct() {
+  for (const parameter of searchParameters) {
+    const productApi = apiURL + "/" + parameter[1];
+    try {
+      const response = await fetch(productApi);
+      const json = await response.json();
+      chosenProduct = await json.data;
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
   }
 }
 
@@ -120,6 +122,7 @@ async function displayChosenProduct(data) {
   displayChosenContainer.append(ChosenproductHtml);
 }
 async function main() {
+  await getProduct();
   await displayChosenProduct(chosenProduct);
   await update(chosenProduct);
 }
