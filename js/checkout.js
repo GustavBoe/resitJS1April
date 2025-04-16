@@ -14,7 +14,15 @@ async function getProducts(url) {
   } finally {
   }
 }
+function showLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = false;
+}
 
+function hideLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = true;
+}
 let calculation = () => {
   let cartCounter = document.getElementById("header-cart-counter");
   cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
@@ -105,8 +113,15 @@ let clearEntireCart = () => {
   localStorage.setItem("cart-data", JSON.stringify(cart));
 };
 async function main() {
-  await getProducts(apiURL);
-  await generateCartProducts(cart);
-  totalSum();
+  showLoader();
+  try {
+    await getProducts(apiURL);
+    await generateCartProducts(cart);
+    totalSum();
+  } catch (error) {
+    alert(error);
+  } finally {
+    hideLoader();
+  }
 }
 main();

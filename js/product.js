@@ -16,7 +16,15 @@ async function getProduct() {
     }
   }
 }
+function showLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = false;
+}
 
+function hideLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = true;
+}
 let removeProductFromCart = (id) => {
   let selectedProduct = chosenProduct.id;
   let search = cart.find((x) => x.id === selectedProduct);
@@ -122,8 +130,15 @@ async function displayChosenProduct(data) {
   displayChosenContainer.append(ChosenproductHtml);
 }
 async function main() {
-  await getProduct();
-  await displayChosenProduct(chosenProduct);
-  await update(chosenProduct);
+  showLoader();
+  try {
+    await getProduct();
+    await displayChosenProduct(chosenProduct);
+    await update(chosenProduct);
+  } catch (error) {
+    alert(error);
+  } finally {
+    hideLoader();
+  }
 }
 main();
