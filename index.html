@@ -15,14 +15,13 @@
       src="https://kit.fontawesome.com/ad6ed871b9.js"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/index.js" defer></script>
+    <script type="module" src="./js/index.js" defer></script>
   </head>
   <body>
     <header>
       <nav class="navbar">
         <ul>
           <li><a href="../index.html" class="active">Home</a></li>
-          <li><a href="../product/index.html">Products</a></li>
           <li>
             <a href="../index.html" class="nav-logo"
               ><img
@@ -30,10 +29,9 @@
                 alt="The logo for Game Hub, depicting a vintage game-controller"
             /></a>
           </li>
-          <li><a href="../index.html">Contact</a></li>
           <li>
             <div class="header-cart">
-              <a href="./index.html">
+              <a href="./checkout/index.html">
                 <i class="fa-solid fa-cart-shopping fa-xl"></i
               ></a>
               <div class="header-cart-counter" id="header-cart-counter">0</div>
@@ -42,6 +40,7 @@
         </ul>
       </nav>
     </header>
+    <div class="loader">Loading products...</div>
     <div id="display-container"></div>
   </body>
 </html>

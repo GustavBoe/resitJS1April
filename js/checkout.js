@@ -1,8 +1,8 @@
+import loader from "./loadingFunctions.mjs";
 const apiURL = "https://v2.api.noroff.dev/gamehub";
 let checkoutTotal = document.getElementById("checkout-total");
 let checkoutCart = document.getElementById("checkout-cart");
 let cart = JSON.parse(localStorage.getItem("cart-data")) || [];
-
 let allProducts = [];
 
 async function getProducts(url) {
@@ -106,8 +106,15 @@ let clearEntireCart = () => {
   localStorage.setItem("cart-data", JSON.stringify(cart));
 };
 async function main() {
-  await getProducts(apiURL);
-  await generateCartProducts(cart);
-  totalSum();
+  loader.show();
+  try {
+    await getProducts(apiURL);
+    await generateCartProducts(cart);
+    totalSum();
+  } catch (error) {
+    alert(error);
+  } finally {
+    loader.hide();
+  }
 }
 main();

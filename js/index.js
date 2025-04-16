@@ -1,4 +1,6 @@
+import loader from "./loadingFunctions.mjs";
 const apiURL = "https://v2.api.noroff.dev/gamehub";
+let cart = JSON.parse(localStorage.getItem("cart-data")) || [];
 let allProducts = [];
 async function getProducts(url) {
   try {
@@ -10,6 +12,11 @@ async function getProducts(url) {
   } finally {
   }
 }
+let calculation = () => {
+  let cartCounter = document.getElementById("header-cart-counter");
+  cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
+};
+
 const displayContainer = document.getElementById("display-container");
 
 function generateProductHtml(product) {
@@ -81,7 +88,15 @@ async function displayProducts(data) {
 }
 
 async function main() {
-  await getProducts(apiURL);
-  await displayProducts(allProducts);
+  loader.show();
+  calculation();
+  try {
+    await getProducts(apiURL);
+    await displayProducts(allProducts);
+  } catch (error) {
+    alert(error);
+  } finally {
+    loader.hide();
+  }
 }
 main();
