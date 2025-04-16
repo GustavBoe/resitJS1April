@@ -2,7 +2,8 @@ body {
   background-color: rgba(58, 101, 165, 1);
   color: white;
 }
-.loader {
+.loader,
+.checkout-heading {
   font-size: 5rem;
   text-align: center;
 }
@@ -54,7 +55,8 @@ body {
 .homeButton,
 .clearEntireButton,
 .checkout-main,
-.checkout-forms > button {
+.checkout-forms > button,
+.checkout-heading {
   font-family: Jockey One;
   letter-spacing: 0.1rem;
 }
