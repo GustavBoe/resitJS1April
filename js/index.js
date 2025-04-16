@@ -11,6 +11,16 @@ async function getProducts(url) {
   } finally {
   }
 }
+function showLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = false;
+}
+
+function hideLoader() {
+  const loader = document.querySelector(".loader");
+  loader.hidden = true;
+}
+
 let calculation = () => {
   let cartCounter = document.getElementById("header-cart-counter");
   cartCounter.innerHTML = cart.map((x) => x.item).reduce((x, y) => x + y, 0);
@@ -87,9 +97,16 @@ async function displayProducts(data) {
 }
 
 async function main() {
-  calculation();
-  await getProducts(apiURL);
-  await displayProducts(allProducts);
+  showLoader();
+  try {
+    calculation();
+    await getProducts(apiURL);
+    await displayProducts(allProducts);
+  } catch (error) {
+    alert(error);
+  } finally {
+    hideLoader();
+  }
 }
 
 main();
