@@ -91,4 +91,5 @@ async function main() {
   await getProducts(apiURL);
   await displayProducts(allProducts);
 }
+
 main();
