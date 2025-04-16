@@ -40,12 +40,115 @@
         </ul>
       </nav>
     </header>
-    <h1 class="checkout-heading">Checkout</h1>
-    <div class="loader">Loading cart..</div>
-    <div id="checkout-cart" class="checkout-cart"></div>
-    <div id="checkout-total" class="checkout-total"></div>
-    <div class="checkout-button-container">
-      <a href="./confirmation/index.html"><button>Checkout</button></a>
-    </div>
+    <main class="checkout-main">
+      <h1 class="checkout-heading">Checkout</h1>
+      <div class="loader">Loading cart..</div>
+      <div id="checkout-cart" class="checkout-cart"></div>
+      <div id="checkout-total" class="checkout-total"></div>
+      <section class="checkout-container">
+        <form
+          class="checkout-forms"
+          action="../checkout/confirmation/index.html"
+          method="GET"
+        >
+          <label for="card-name"
+            ><i class="fa-regular fa-user"></i>Cardholders name</label
+          >
+          <input
+            type="text"
+            id="card-name"
+            name="card-name"
+            inputmode="latin"
+            autocomplete="cc-name"
+            placeholder="Ola Norseman"
+            required
+          />
+          <label for="card-number"
+            ><i class="fa-regular fa-credit-card"></i>Card number</label
+          >
+          <input
+            type="number"
+            inputmode="numeric"
+            pattern="[0-9\s]{13,19}"
+            id="card-number"
+            name="card-number"
+            autocomplete="cc-number"
+            maxlength="19"
+            placeholder="xxxx-xxxx-xxxx-xxxx"
+            required
+          />
+          <div class="cvc-exp-container">
+            <label for="card-exp-m">Month</label>
+            <input
+              type="year"
+              pattern="[0-9s]{2}"
+              id="card-exp-m"
+              name="card-exp-m"
+              autocomplete="cc-exp-month"
+              maxlength="2"
+              placeholder="01"
+              required
+            />
+            <label for="card-exp-y">Year</label>
+            <input
+              type="year"
+              pattern="[0-9s]{2}"
+              id="card-exp-y"
+              name="card-exp-y"
+              autocomplete="cc-exp-year"
+              maxlength="2"
+              placeholder="01"
+              required
+            />
+            <label for="card-cvc">CvC</label>
+            <input
+              type="tel"
+              pattern="[0-9s]{3}"
+              id="card-cvc"
+              name="card-cvc"
+              autocomplete="cc-csc"
+              maxlength="3"
+              placeholder="123"
+              required
+            />
+          </div>
+          <label for="address-home"
+            ><i class="fa-solid fa-house"></i>Shipping address</label
+          >
+          <input
+            type="text"
+            id="address-home"
+            name="address-home"
+            inputmode="latin"
+            autocomplete="street-address"
+            placeholder="Animal path 64"
+          />
+          <label for="address-country"
+            ><i class="fa-solid fa-globe"></i>Country</label
+          >
+          <input
+            type="text"
+            id="address-country"
+            name="adress-country"
+            inputmode="latin"
+            autocomplete="address-level3"
+            placeholder="Nepal"
+          />
+          <label for="email"
+            ><i class="fa-regular fa-envelope"></i>Email address</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="Ola-Norseman@RainyDays.com"
+            required
+          />
+          <button class="purchase-button">Purchase</button>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

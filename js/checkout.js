@@ -46,7 +46,7 @@ let generateCartProducts = () => {
             <h2 class = title-price">
             <p>${search.title}</p>
             <p class= "cart-product-price">$ ${search.price}</p>
-            <i onclick="removeProduct(${search.id})" class="fa-solid fa-minus"></i>
+            
             </h2>
             </div>
             <div class = "cart-product-quantity">
@@ -67,7 +67,6 @@ let generateCartProducts = () => {
           <h2 class = "title-price">
           <p>${search.title}</p>
           <p class= "cart-product-price">$ ${search.discountedPrice}</p>
-          <i onclick="removeProduct(${id})" class="fa-solid fa-minus"></i>
           </h2>
           </div>
           <div class = "cart-product-quantity">
@@ -102,7 +101,7 @@ let totalSum = () => {
         }
       })
       .reduce((x, y) => x + y, 0);
-    checkoutTotal.innerHTML = `<button onclick="clearEntireCart()" class="clearEntireButton">Clear cart</button> <h2>Total sum: ${amount}</h2>`;
+    checkoutTotal.innerHTML = `<button onclick="clearEntireCart()" class="clearEntireButton">Clear cart</button> <h2>Total sum: $ ${amount}</h2>`;
   } else return;
 };
 

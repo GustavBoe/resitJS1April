@@ -103,11 +103,13 @@ function generateChosenProductHtml(product) {
     productPrice.textContent = "$" + " " + chosenProduct.discountedPrice;
   }
   const addToCartButton = document.createElement("button");
+  addToCartButton.classList.add("addToCartButton");
   addToCartButton.textContent = "Add to cart";
   addToCartButton.addEventListener("click", () => {
     addProductToCart(chosenProduct);
   });
   const removeFromCartButton = document.createElement("button");
+  removeFromCartButton.classList.add("removeFromCartButton");
   removeFromCartButton.textContent = "Remove from cart";
   removeFromCartButton.addEventListener("click", () =>
     removeProductFromCart(chosenProduct)
