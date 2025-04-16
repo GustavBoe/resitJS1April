@@ -38,7 +38,7 @@ function generateProductHtml(product) {
   }
 
   const productLink = document.createElement("a");
-  productLink.href = `../product/index.html?id=${allProducts[product].id}`; /* Code borrowed from Tonje Schjefstad´s "bestsellers.js"*/
+  productLink.href = `./product/index.html?id=${allProducts[product].id}`; /* Code borrowed from Tonje Schjefstad´s "bestsellers.js"*/
   productLink.classList.add("product-link-button");
   productLink.innerHTML = "<button>View</button>";
 
