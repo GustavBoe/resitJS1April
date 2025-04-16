@@ -87,7 +87,6 @@ async function displayProducts(data) {
 }
 
 async function main() {
-  loader.show();
   calculation();
   await getProducts(apiURL);
   await displayProducts(allProducts);
